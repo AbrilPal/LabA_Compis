@@ -7,20 +7,48 @@
     para luego este ser utilizado para la creacion del AFN.
 """
 
-from binarytree import build
-from Stack import *
+from Nodo import *
 from Infix_a_Postfix import Infix_Postfix
+import graphviz
 
-def Arbol_sintactico(expresion_reg):
-    operadoresPar = ['|', '.']
-    operadoresIndividual = ['+', '|', '*']
-    
-    return None
+def construir_arbol(postfix):
+    stack = []
+    for c in postfix:
+        if c == '?':
+            child = stack.pop()
+            node = Node(c, None, child)
+            stack.append(node)
+        elif c == '*':
+            child = stack.pop()
+            node = Node(c, child)
+            stack.append(node)
+        elif c == '.':
+            right_child = stack.pop()
+            left_child = stack.pop()
+            node = Node(c, left_child, right_child)
+            stack.append(node)
+        else:
+            node = Node(c)
+            stack.append(node)
+    return stack[0]
 
-    # if (cadenaAl.peek() in operadoresPar) or (cadenaAl.peek() in operadoresIndividual):
-    #     root = Node(cadenaAl.pop())
-    #     if (cadenaAl.peek() )
+def imprimir_arbol(nodo, nombre_archivo):
+    dot = graphviz.Digraph(comment='Árbol sintáctico')
+    _agregar_nodo(dot, nodo)
+    dot.render(nombre_archivo, view=True)
 
-    
-expresion_postfix = Infix_Postfix("(a*|b*)c")
-print(Arbol_sintactico(expresion_postfix))
+def _agregar_nodo(dot, nodo):
+    if nodo is None:
+        return
+    _agregar_nodo(dot, nodo.left)
+    _agregar_nodo(dot, nodo.right)
+    dot.node(str(nodo), str(nodo.value))
+    if nodo.left is not None:
+        dot.edge(str(nodo), str(nodo.left))
+    if nodo.right is not None:
+        dot.edge(str(nodo), str(nodo.right))
+
+expresion_postfix = Infix_Postfix("a1*1c*")
+tree = construir_arbol(expresion_postfix)
+imprimir_arbol(tree, "arbol_sintactico")
+
