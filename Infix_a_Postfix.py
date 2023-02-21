@@ -33,24 +33,24 @@ def Infix_Postfix(expresion_re):
         # print(c, " esta es c\n")
         if c == '(':
             stack.push(c)
-            break
-        if c == ')':
+        elif c == ')':
             while stack.peek() != '(':
                 postfix.append(stack.pop())
-            stack.pop()
-            break
+            while not stack.is_empty():
+                stack.pop()
 
-        while stack.is_empty() != True:
-            peekedChar = stack.peek()
-            peekedCharPrece = getPrecedence(peekedChar)
-            currentCharPrece = getPrecedence(c)
+        else:
+            while stack.is_empty() != True:
+                peekedChar = stack.peek()
+                peekedCharPrece = getPrecedence(peekedChar)
+                currentCharPrece = getPrecedence(c)
 
-            if peekedCharPrece >= currentCharPrece:
-                postfix.append(stack.pop())
-            else:
-                break
-        
-        stack.push(c)
+                if peekedCharPrece >= currentCharPrece:
+                    postfix.append(stack.pop())
+                else:
+                    break
+            
+            stack.push(c)
     
     while stack.is_empty() != True:
         postfix.append(stack.pop())
@@ -59,4 +59,3 @@ def Infix_Postfix(expresion_re):
     print("La expresion POSTFIX es: ", postfixFinal, "\n")
     return postfixFinal
 
-Infix_Postfix("ab*ab*")
