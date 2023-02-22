@@ -1,22 +1,16 @@
 // Árbol sintáctico
 digraph {
-	<Nodo.Node object at 0x7f8bc02ccfa0> [label=a]
-	<Nodo.Node object at 0x7f8bc02ccee0> [label=b]
-	<Nodo.Node object at 0x7f8bc02cce80> [label="|"]
-	<Nodo.Node object at 0x7f8bc02cce80> -> <Nodo.Node object at 0x7f8bc02ccfa0>
-	<Nodo.Node object at 0x7f8bc02cce80> -> <Nodo.Node object at 0x7f8bc02ccee0>
-	<Nodo.Node object at 0x7f8bc02ccc70> [label="*"]
-	<Nodo.Node object at 0x7f8bc02ccc70> -> <Nodo.Node object at 0x7f8bc02cce80>
-	<Nodo.Node object at 0x7f8bc04f6370> [label=a]
-	<Nodo.Node object at 0x7f8bc04f63a0> [label="."]
-	<Nodo.Node object at 0x7f8bc04f63a0> -> <Nodo.Node object at 0x7f8bc02ccc70>
-	<Nodo.Node object at 0x7f8bc04f63a0> -> <Nodo.Node object at 0x7f8bc04f6370>
-	<Nodo.Node object at 0x7f8bc04f6430> [label=b]
-	<Nodo.Node object at 0x7f8bc04f6490> [label="."]
-	<Nodo.Node object at 0x7f8bc04f6490> -> <Nodo.Node object at 0x7f8bc04f63a0>
-	<Nodo.Node object at 0x7f8bc04f6490> -> <Nodo.Node object at 0x7f8bc04f6430>
-	<Nodo.Node object at 0x7f8bc04f64f0> [label=b]
-	<Nodo.Node object at 0x7f8bc04f6550> [label="."]
-	<Nodo.Node object at 0x7f8bc04f6550> -> <Nodo.Node object at 0x7f8bc04f6490>
-	<Nodo.Node object at 0x7f8bc04f6550> -> <Nodo.Node object at 0x7f8bc04f64f0>
+	<Nodo.Node object at 0x7f7cb0022fa0> [label="ε"]
+	<Nodo.Node object at 0x7f7cb0134fa0> [label=a]
+	<Nodo.Node object at 0x7f7cb0134f40> [label="|"]
+	<Nodo.Node object at 0x7f7cb0134f40> -> <Nodo.Node object at 0x7f7cb0022fa0>
+	<Nodo.Node object at 0x7f7cb0134f40> -> <Nodo.Node object at 0x7f7cb0134fa0>
+	<Nodo.Node object at 0x7f7cb0153640> [label=b]
+	<Nodo.Node object at 0x7f7cc03f4400> [label="*"]
+	<Nodo.Node object at 0x7f7cc03f4400> -> <Nodo.Node object at 0x7f7cb0153640>
+	<Nodo.Node object at 0x7f7cc03f4430> [label="."]
+	<Nodo.Node object at 0x7f7cc03f4430> -> <Nodo.Node object at 0x7f7cb0134f40>
+	<Nodo.Node object at 0x7f7cc03f4430> -> <Nodo.Node object at 0x7f7cc03f4400>
+	<Nodo.Node object at 0x7f7cc03f44c0> [label="*"]
+	<Nodo.Node object at 0x7f7cc03f44c0> -> <Nodo.Node object at 0x7f7cc03f4430>
 }

@@ -30,17 +30,14 @@ def Infix_Postfix(expresion_re):
     expresion_form = Formatear(expresion_re)
 
     for c in expresion_form:
-        # print(c, " esta es c\n")
         if c == '(':
             stack.push(c)
         elif c == ')':
             while stack.peek() != '(':
                 postfix.append(stack.pop())
-            while not stack.is_empty():
-                stack.pop()
-
+            stack.pop()
         else:
-            while stack.is_empty() != True:
+            while not stack.is_empty():
                 peekedChar = stack.peek()
                 peekedCharPrece = getPrecedence(peekedChar)
                 currentCharPrece = getPrecedence(c)
@@ -52,7 +49,7 @@ def Infix_Postfix(expresion_re):
             
             stack.push(c)
     
-    while stack.is_empty() != True:
+    while not stack.is_empty():
         postfix.append(stack.pop())
 
     postfixFinal = ''.join(postfix)
