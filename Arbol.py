@@ -44,7 +44,5 @@ def _agregar_nodo(dot, nodo):
     if nodo.right is not None:
         dot.edge(str(nodo), str(nodo.right))
 
-expresion_postfix = Infix_Postfix("((ε|a)b*)*")
-tree = construir_arbol(expresion_postfix)
-imprimir_arbol(tree, "arbol_sintactico")
+
 
