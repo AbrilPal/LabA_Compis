@@ -14,15 +14,11 @@ import graphviz
 def construir_arbol(postfix):
     stack = []
     for c in postfix:
-        if c == '?':
-            child = stack.pop()
-            node = Node(c, None, child)
-            stack.append(node)
-        elif c == '*':
+        if c == '*' or c == '+' or c == '?':
             child = stack.pop()
             node = Node(c, child)
             stack.append(node)
-        elif c == '.':
+        elif c == '.' or c == '|':
             right_child = stack.pop()
             left_child = stack.pop()
             node = Node(c, left_child, right_child)
@@ -48,7 +44,7 @@ def _agregar_nodo(dot, nodo):
     if nodo.right is not None:
         dot.edge(str(nodo), str(nodo.right))
 
-expresion_postfix = Infix_Postfix("a1*1c*")
+expresion_postfix = Infix_Postfix("(a|b)*abb")
 tree = construir_arbol(expresion_postfix)
 imprimir_arbol(tree, "arbol_sintactico")
 
