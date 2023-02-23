@@ -138,7 +138,7 @@ def generar_grafo_AFN(afn):
         visitados.add(nodo)
 
         if nodo in nodos_finales:
-            marca = '*'
+            marca = '**'
         else:
             marca = ''
 
