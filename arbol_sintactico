@@ -1,16 +1,10 @@
 // Árbol sintáctico
 digraph {
-	<Nodo.Node object at 0x7f7cb0022fa0> [label="ε"]
-	<Nodo.Node object at 0x7f7cb0134fa0> [label=a]
-	<Nodo.Node object at 0x7f7cb0134f40> [label="|"]
-	<Nodo.Node object at 0x7f7cb0134f40> -> <Nodo.Node object at 0x7f7cb0022fa0>
-	<Nodo.Node object at 0x7f7cb0134f40> -> <Nodo.Node object at 0x7f7cb0134fa0>
-	<Nodo.Node object at 0x7f7cb0153640> [label=b]
-	<Nodo.Node object at 0x7f7cc03f4400> [label="*"]
-	<Nodo.Node object at 0x7f7cc03f4400> -> <Nodo.Node object at 0x7f7cb0153640>
-	<Nodo.Node object at 0x7f7cc03f4430> [label="."]
-	<Nodo.Node object at 0x7f7cc03f4430> -> <Nodo.Node object at 0x7f7cb0134f40>
-	<Nodo.Node object at 0x7f7cc03f4430> -> <Nodo.Node object at 0x7f7cc03f4400>
-	<Nodo.Node object at 0x7f7cc03f44c0> [label="*"]
-	<Nodo.Node object at 0x7f7cc03f44c0> -> <Nodo.Node object at 0x7f7cc03f4430>
+	<Nodo.Node object at 0x7fb5a8145ac0> [label=a]
+	<Nodo.Node object at 0x7fb5a8145a00> [label=b]
+	<Nodo.Node object at 0x7fb5b83f31c0> [label="|"]
+	<Nodo.Node object at 0x7fb5b83f31c0> -> <Nodo.Node object at 0x7fb5a8145ac0>
+	<Nodo.Node object at 0x7fb5b83f31c0> -> <Nodo.Node object at 0x7fb5a8145a00>
+	<Nodo.Node object at 0x7fb5b83f31f0> [label="*"]
+	<Nodo.Node object at 0x7fb5b83f31f0> -> <Nodo.Node object at 0x7fb5b83f31c0>
 }
