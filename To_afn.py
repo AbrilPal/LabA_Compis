@@ -26,7 +26,7 @@ class Estado:
         return self.epsilon_transiciones
 
     def __str__(self):
-        return f"<{self.id}>"
+        return f"{self.id}"
 
 class AFN:
     def __init__(self, inicial, final):
@@ -48,6 +48,8 @@ class AFN:
         nodos = [self.inicial]
         nodos_finales = {self.final}
         transiciones = []
+
+        print("transiciones:\n")
         
         while nodos:
             nodo = nodos.pop()
