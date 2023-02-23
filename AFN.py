@@ -7,7 +7,7 @@ class State:
         self.transitions = {}
 
     def add_transition(self, label, state):
-        print(label, " label")
+        print(label, " label ", state)
         if label in self.transitions:
             self.transitions[label].append(state)
         else:
@@ -41,20 +41,20 @@ def construir_AFN(root):
         state = State(generate_id())
         if node.value in ['*', '+', '?']:
             child = build_states(node.left)
-            state.add_transition(None, child)
+            state.add_transition("ε", child)
             if node.value in ['*', '+']:
-                state.add_transition(None, State(generate_id()))
+                state.add_transition("ε", State(generate_id()))
         elif node.value == '.':
             left = build_states(node.left)
             right = build_states(node.right)
-            left.add_transition(None, right)
+            left.add_transition("ε", right)
             state = left
         elif node.value == '|':
             left = build_states(node.left)
             right = build_states(node.right)
             start = State(generate_id())
-            start.add_transition(None, left)
-            start.add_transition(None, right)
+            start.add_transition("ε", left)
+            start.add_transition("ε", right)
             state = start
         else:
             state.add_transition(node.value, State(generate_id()))
