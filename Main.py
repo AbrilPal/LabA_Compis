@@ -17,3 +17,5 @@ tree = construir_arbol(expresion_postfix)
 imprimir_arbol(tree, "arbol_sintactico")
 afn = construir_AFN_desde_arbol(tree)
 print(afn)
+
+g = generar_grafo_AFN(afn)

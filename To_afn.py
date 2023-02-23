@@ -123,3 +123,39 @@ def construir_AFN_desde_arbol(nodo):
         estado_final = Estado()
         estado_inicial.add_transition(nodo.value, estado_final)
         return AFN(estado_inicial, estado_final)
+
+def generar_grafo_AFN(afn):
+    visitados = set()
+    nodos = [afn.inicial]
+    nodos_finales = {afn.final}
+    transiciones = []
+
+    g = graphviz.Digraph('AFN', filename='afn.gv', format='png')
+    g.attr(rankdir='LR', size='8,5')
+
+    while nodos:
+        nodo = nodos.pop()
+        visitados.add(nodo)
+
+        if nodo in nodos_finales:
+            marca = '*'
+        else:
+            marca = ''
+
+        g.node(str(nodo), label=str(nodo)+marca)
+
+        for simbolo, estados_destino in nodo.transiciones.items():
+            for estado_destino in estados_destino:
+                transiciones.append((nodo, estado_destino, simbolo))
+                if estado_destino not in visitados:
+                    nodos.append(estado_destino)
+
+        for estado_destino in nodo.epsilon_transiciones:
+            transiciones.append((nodo, estado_destino, 'ε'))
+            if estado_destino not in visitados:
+                nodos.append(estado_destino)
+
+    for e1, e2, s in transiciones:
+        g.edge(str(e1), str(e2), label=s)
+
+    g.view()
