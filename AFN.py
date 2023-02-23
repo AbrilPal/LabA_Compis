@@ -1,17 +1,20 @@
 from collections import deque
+from graphviz import Digraph
 
 class State:
     def __init__(self, id):
-        print(id)
         self.id = id
         self.transitions = {}
 
     def add_transition(self, label, state):
-        print(label, " label ", state)
+        print(f'Agregando transición: {state.id} --({label})--> {state.id}')
         if label in self.transitions:
             self.transitions[label].append(state)
         else:
             self.transitions[label] = [state]
+
+    def get_transitions(self):
+        return self.transitions
     
     def __hash__(self):
         return hash(self.id)
@@ -25,6 +28,29 @@ class NFA:
         self.states = states
         self.final_states = final_states
         self.alphabet = alphabet
+
+    def __str__(self):
+        # Print the start state
+        start_str = f'Start state: {self.start_state.id}\n'
+
+        # Print the final states
+        final_str = 'Final states: '
+        for state in self.final_states:
+            final_str += f'{state.id}, '
+        final_str = final_str[:-2] + '\n'
+
+        # Print the transitions
+        trans_str = 'Transitions:\n'
+        for state in self.states:
+            transitions = state.get_transitions()
+            print(transitions)
+            for label in transitions:
+                for dest_state in transitions[label]:
+                    trans_str += f'{state.id} --({label})--> {dest_state.id}\n'
+
+        return start_str + final_str + trans_str
+
+
 
 def construir_AFN(root):
     # Generar identificadores únicos para los estados
@@ -82,5 +108,7 @@ def construir_AFN(root):
             if label is not None:
                 alphabet.add(label)
 
+    afn = NFA(start, states, {final}, alphabet)
+
     # Crear el objeto NFA y retornarlo
-    return NFA(start, states, {final}, alphabet)
+    return afn
