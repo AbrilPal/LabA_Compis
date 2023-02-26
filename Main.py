@@ -11,8 +11,9 @@ from Infix_a_Postfix import *
 from To_afn import *
 
 expresion_regular = input("Ingrese la expresion regular: ")
+expresion_regular_nuevo = expresion_regular.replace(".", "$")
 
-expresion_postfix = Infix_Postfix(expresion_regular)
+expresion_postfix = Infix_Postfix(expresion_regular_nuevo)
 tree = construir_arbol(expresion_postfix)
 imprimir_arbol(tree, "arbol_sintactico")
 afn = construir_AFN_desde_arbol(tree)

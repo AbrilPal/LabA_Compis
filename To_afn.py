@@ -130,7 +130,7 @@ def generar_grafo_AFN(afn):
     nodos_finales = {afn.final}
     transiciones = []
 
-    g = graphviz.Digraph('AFN', filename='afn.gv', format='png')
+    g = graphviz.Digraph('AFN', filename='afn', format='pdf')
     g.attr(rankdir='LR', size='8,5')
 
     while nodos:
