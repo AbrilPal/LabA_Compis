@@ -1,7 +1,7 @@
 """
     Andrea Abril Palencia Gutierrez, 18198
     Diseño de Lenguajes de Programacion
-    23 de febrero del 2023
+    26 de febrero del 2023
 
     AFN: crea el Automata Finito No Determinista a partir 
     del arbol sintactico generado, tambien grafica este AFN.
