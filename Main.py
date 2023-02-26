@@ -3,7 +3,8 @@
     Diseño de Lenguajes de Programacion
     23 de febrero del 2023
 
-    Main:
+    Main: programa principal que manda a llamar las funciones
+    de los otros archivos.
 """
 
 from Arbol import *
