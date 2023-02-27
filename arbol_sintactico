@@ -1,20 +1,20 @@
 // Árbol sintáctico
 digraph {
-	<Nodo.Node object at 0x7f8600131fa0> [label=a]
-	<Nodo.Node object at 0x7f8600131f40> [label=b]
-	<Nodo.Node object at 0x7f86002c37f0> [label="*"]
-	<Nodo.Node object at 0x7f86002c37f0> -> <Nodo.Node object at 0x7f8600131f40>
-	<Nodo.Node object at 0x7f86002c38b0> [label="."]
-	<Nodo.Node object at 0x7f86002c38b0> -> <Nodo.Node object at 0x7f8600131fa0>
-	<Nodo.Node object at 0x7f86002c38b0> -> <Nodo.Node object at 0x7f86002c37f0>
-	<Nodo.Node object at 0x7f86002c3910> [label=a]
-	<Nodo.Node object at 0x7f86002c3970> [label="."]
-	<Nodo.Node object at 0x7f86002c3970> -> <Nodo.Node object at 0x7f86002c38b0>
-	<Nodo.Node object at 0x7f86002c3970> -> <Nodo.Node object at 0x7f86002c3910>
-	<Nodo.Node object at 0x7f86002c39d0> [label=b]
-	<Nodo.Node object at 0x7f86002c3a30> [label="*"]
-	<Nodo.Node object at 0x7f86002c3a30> -> <Nodo.Node object at 0x7f86002c39d0>
-	<Nodo.Node object at 0x7f86002c3a90> [label="."]
-	<Nodo.Node object at 0x7f86002c3a90> -> <Nodo.Node object at 0x7f86002c3970>
-	<Nodo.Node object at 0x7f86002c3a90> -> <Nodo.Node object at 0x7f86002c3a30>
+	<Nodo.Node object at 0x7f8a68049fa0> [label=a]
+	<Nodo.Node object at 0x7f8a68049f40> [label=b]
+	<Nodo.Node object at 0x7f8a781b37f0> [label="*"]
+	<Nodo.Node object at 0x7f8a781b37f0> -> <Nodo.Node object at 0x7f8a68049f40>
+	<Nodo.Node object at 0x7f8a781b38b0> [label="."]
+	<Nodo.Node object at 0x7f8a781b38b0> -> <Nodo.Node object at 0x7f8a68049fa0>
+	<Nodo.Node object at 0x7f8a781b38b0> -> <Nodo.Node object at 0x7f8a781b37f0>
+	<Nodo.Node object at 0x7f8a781b3910> [label=a]
+	<Nodo.Node object at 0x7f8a781b3970> [label="."]
+	<Nodo.Node object at 0x7f8a781b3970> -> <Nodo.Node object at 0x7f8a781b38b0>
+	<Nodo.Node object at 0x7f8a781b3970> -> <Nodo.Node object at 0x7f8a781b3910>
+	<Nodo.Node object at 0x7f8a781b39d0> [label=b]
+	<Nodo.Node object at 0x7f8a781b3a30> [label="*"]
+	<Nodo.Node object at 0x7f8a781b3a30> -> <Nodo.Node object at 0x7f8a781b39d0>
+	<Nodo.Node object at 0x7f8a781b3a90> [label="."]
+	<Nodo.Node object at 0x7f8a781b3a90> -> <Nodo.Node object at 0x7f8a781b3970>
+	<Nodo.Node object at 0x7f8a781b3a90> -> <Nodo.Node object at 0x7f8a781b3a30>
 }

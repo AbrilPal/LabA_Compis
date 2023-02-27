@@ -21,9 +21,11 @@ class Estado:
 
     def add_transition(self, simbolo, estado):
         if simbolo in self.transiciones:
-            self.transiciones[simbolo].add(estado)
+            if estado not in self.transiciones[simbolo]:
+                self.transiciones[simbolo].add(estado)
         else:
             self.transiciones[simbolo] = {estado}
+
 
     def add_epsilon_transition(self, estado):
         self.epsilon_transiciones.add(estado)
@@ -55,7 +57,6 @@ class AFN:
     def __str__(self):
         visitados = set()
         nodos = [self.inicial]
-        nodos_finales = {self.final}
         transiciones = []
 
         print("transiciones:\n")
@@ -63,11 +64,6 @@ class AFN:
         while nodos:
             nodo = nodos.pop()
             visitados.add(nodo)
-            
-            if nodo in nodos_finales:
-                marca = '*'
-            else:
-                marca = ''
             
             for simbolo, estados_destino in nodo.transiciones.items():
                 for estado_destino in estados_destino:
@@ -80,7 +76,6 @@ class AFN:
                 if estado_destino not in visitados:
                     nodos.append(estado_destino)
         
-        # estados_str = [f'{str(e)}{marca}' for e in visitados]
         transiciones_str = [f'{str(e1)} --{s}--> {str(e2)}' for e1, e2, s in transiciones]
         
         return '\n'.join(transiciones_str)
