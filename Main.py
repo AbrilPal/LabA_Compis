@@ -10,14 +10,32 @@
 from Arbol import *
 from Infix_a_Postfix import *
 from To_afn import *
+import sys
 
+abiertos = 0
+cerrados = 0
+
+# EXPRESION REGULAR
 expresion_regular = input("Ingrese la expresion regular: ")
-expresion_regular_nuevo = expresion_regular.replace(".", "$")
+for caracter in expresion_regular:
+    if caracter == "(":
+        abiertos += 1
+    elif caracter == ")":
+        cerrados += 1
+if (abiertos > cerrados) or (abiertos < cerrados):
+    print("\nERROR: Verifique los paréntesis, ya que hay", abiertos,  "paréntesis abiertos y", cerrados, "paréntesis cerrados.")
+    sys.exit()
+else:
+    expresion_regular_nuevo = expresion_regular.replace(".", "$")
 
-expresion_postfix = Infix_Postfix(expresion_regular_nuevo)
-tree = construir_arbol(expresion_postfix)
-imprimir_arbol(tree, "arbol_sintactico")
-afn = construir_AFN_desde_arbol(tree)
-print(afn)
+    # POSTFIX
+    expresion_postfix = Infix_Postfix(expresion_regular_nuevo)
 
-g = generar_grafo_AFN(afn)
+    # ARBOL SINTACTICO
+    tree = construir_arbol(expresion_postfix)
+    imprimir_arbol(tree, "arbol_sintactico")
+
+    # AFN
+    afn = construir_AFN_desde_arbol(tree)
+    print(afn)
+    g = generar_grafo_AFN(afn)

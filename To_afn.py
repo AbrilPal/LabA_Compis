@@ -80,7 +80,7 @@ class AFN:
                 if estado_destino not in visitados:
                     nodos.append(estado_destino)
         
-        estados_str = [f'{str(e)}{marca}' for e in visitados]
+        # estados_str = [f'{str(e)}{marca}' for e in visitados]
         transiciones_str = [f'{str(e1)} --{s}--> {str(e2)}' for e1, e2, s in transiciones]
         
         return '\n'.join(transiciones_str)
@@ -147,11 +147,13 @@ def generar_grafo_AFN(afn):
         visitados.add(nodo)
 
         if nodo in nodos_finales:
-            marca = '**'
+            nodo_attrs = {'peripheries': '2', 'color': 'red'}  # Doble círculo si es estado final
+        elif nodo == afn.inicial:
+            nodo_attrs = {'color': 'blue'}  # Color rojo si es estado inicial
         else:
-            marca = ''
+            nodo_attrs = {}
 
-        g.node(str(nodo), label=str(nodo)+marca)
+        g.node(str(nodo), label=str(nodo), **nodo_attrs)
 
         for simbolo, estados_destino in nodo.transiciones.items():
             for estado_destino in estados_destino:

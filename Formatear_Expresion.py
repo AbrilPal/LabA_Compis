@@ -9,7 +9,7 @@
 
 def Formatear(expresion_reg):
     expresion_form = []
-    print("La expresion regular ingresada es: ", expresion_reg, "\n")
+    print("\nLa expresion regular ingresada es: ", expresion_reg, "\n")
     todosOperadores = ['|', '?', '+' , '*', '^']
     operadoresBinarios = ['|', '^']
     if len(expresion_reg) > 0:
