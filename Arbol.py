@@ -8,7 +8,6 @@
 """
 
 from Nodo import *
-from Infix_a_Postfix import Infix_Postfix
 import graphviz
 
 def construir_arbol(postfix):
