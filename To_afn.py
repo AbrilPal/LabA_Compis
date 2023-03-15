@@ -7,7 +7,7 @@
     del arbol sintactico generado, tambien grafica este AFN.
 """
 
-from Nodo import *
+from Lab_A.Nodo import *
 import graphviz
 
 class Estado:

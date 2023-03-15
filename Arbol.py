@@ -7,7 +7,7 @@
     para luego este ser utilizado para la creacion del AFN.
 """
 
-from Nodo import *
+from Lab_A.Nodo import *
 import graphviz
 
 def construir_arbol(postfix):

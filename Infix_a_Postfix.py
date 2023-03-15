@@ -7,8 +7,8 @@
     formateada y devolver una cadena POSTFIX para luego contruir el
     arbol.
 """
-from Stack import *
-from Formatear_Expresion import Formatear
+from Lab_A.Stack import *
+from Lab_A.Formatear_Expresion import Formatear
 
 def getPrecedence(caracter):
     if(caracter == '(' or caracter == ')'):
