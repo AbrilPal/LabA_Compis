@@ -25,7 +25,6 @@ class Estado:
         else:
             self.transiciones[simbolo] = {estado}
 
-
     def add_epsilon_transition(self, estado):
         self.epsilon_transiciones.add(estado)
 
@@ -35,8 +34,27 @@ class Estado:
     def get_epsilon_transitions(self):
         return self.epsilon_transiciones
 
+    def get_closure(self):
+        closure = set()
+        nodos = [self]
+        while nodos:
+            nodo = nodos.pop()
+            closure.add(nodo)
+            for estado in nodo.get_epsilon_transitions():
+                if estado not in closure:
+                    nodos.append(estado)
+        return closure
+
+    def get_move(self, simbolo):
+        move = set()
+        for estado in self.get_closure():
+            for transicion in estado.get_transitions(simbolo):
+                move |= transicion.get_closure()
+        return move
+
     def __str__(self):
         return f"{self.id}"
+
 
 class AFN:
     def __init__(self, inicial, final):
@@ -164,3 +182,63 @@ def generar_grafo_AFN(afn):
         g.edge(str(e1), str(e2), label=s)
 
     g.view()
+    return g
+
+def obtener_alfabeto(afn):
+    alfabeto = set()
+    visitados = set()
+    nodos = [afn.inicial]
+    
+    while nodos:
+        nodo = nodos.pop()
+        visitados.add(nodo)
+        
+        for simbolo in nodo.transiciones.keys():
+            alfabeto.add(simbolo)
+        
+        for estado_destino in nodo.epsilon_transiciones:
+            if estado_destino not in visitados:
+                nodos.append(estado_destino)
+        
+        for simbolo, estados_destino in nodo.transiciones.items():
+            for estado_destino in estados_destino:
+                if estado_destino not in visitados:
+                    nodos.append(estado_destino)
+    
+    return alfabeto
+
+
+# def construir_AFD_desde_AFN(afn):
+#     estado_inicial = afn.inicial.get_closure()
+#     estados = {estado_inicial}
+#     estado_final = None
+#     transiciones = {}
+
+#     nodos = [estado_inicial]
+#     visitados = set()
+
+#     while nodos:
+#         estado = nodos.pop()
+#         visitados.add(estado)
+
+#         for simbolo in ALFABETO:
+#             move = set()
+#             for e in estado:
+#                 move |= e.get_transitions(simbolo)
+#             closure = set()
+#             for e in move:
+#                 closure |= e.get_closure()
+#             if closure:
+#                 if estado not in estados:
+#                     estados.add(estado)
+#                     if afn.final in estado:
+#                         estado_final = estado
+#                 if closure not in estados:
+#                     estados.add(closure)
+#                     if afn.final in closure:
+#                         estado_final = closure
+#                     nodos.append(closure)
+#                 transiciones[(estado, simbolo)] = closure
+
+#     afd = AFD(estado_inicial, estados, transiciones, estado_final)
+#     return afd
