@@ -76,6 +76,8 @@ class AFN:
         nodos = [self.inicial]
         transiciones = []
 
+        print("----------- AFN --------------")
+        print()
         print("transiciones:\n")
         
         while nodos:
